@@ -8,16 +8,16 @@ class Graph:
     def add_edge(self, u, v):
         self.graph[u].append(v)
  
-    def __dfs_util(self, v, visited):
+    def dfs_rec(self, v, visited):
         visited.add(v)
         print(v, end=' ')
         for neighbour in self.graph[v]:
             if neighbour not in visited:
-                self.__dfs_util(neighbour, visited)
+                self.dfs_rec(neighbour, visited)
 
     def dfs(self, v):
         visited = set()
-        self.__dfs_util(v, visited)
+        self.dfs_rec(v, visited)
         
 g = Graph()
 g.add_edge(0, 1)
